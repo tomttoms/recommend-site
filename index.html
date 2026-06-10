@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고른픽 — 직접 비교한 가성비 추천</title>
+  <meta name="description" content="실측 스펙과 가격을 직접 비교해 정리한 제품 추천. 가성비·용도별·가격대별로 한눈에 고르세요." />
+  <link rel="canonical" href="https://example.com/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="고른픽 — 직접 비교한 가성비 추천" />
+  <meta property="og:description" content="실측 스펙과 가격을 직접 비교해 정리한 제품 추천." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- 사이트 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "고른픽",
+    "url": "https://example.com/",
+    "description": "실측 스펙과 가격을 직접 비교해 정리한 제품 추천 사이트"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">고른픽</a>
+      <nav class="nav">
+        <a href="index.html">홈</a>
+        <a href="about.html">소개</a>
+        <a href="about.html#disclosure">제휴 고지</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>직접 비교한, 믿을 수 있는 추천</h1>
+      <p class="lead">
+        스펙·가격·장단점을 한 줄씩 직접 비교해 정리합니다. 광고성 나열이 아니라
+        <strong>비교표·실측 정보·가격대별 추천</strong>으로 진짜 도움이 되는 글을 씁니다.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">최신 추천</h2>
+      <div class="card-list">
+
+        <!-- 예시 글 카드 (제품 정하면 실제 글로 교체) -->
+        <a class="card" href="posts/template.html">
+          <span class="card-tag">예시 · 템플릿</span>
+          <h3 class="card-title">[카테고리] 가성비 추천 TOP N — 직접 비교 정리</h3>
+          <p class="card-desc">
+            제품을 정하면 이 자리에 실제 비교 추천 글이 들어갑니다. 구조(비교표·가격대별·FAQ)는 그대로 사용하세요.
+          </p>
+          <span class="card-date">YYYY-MM-DD</span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="disclosure">
+        본 사이트는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.
+      </p>
+      <p class="copyright">© <span id="year"></span> 고른픽. 모든 추천은 직접 비교·검토를 거칩니다.</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
