@@ -41,10 +41,27 @@ git push -u origin main
 - [ ] 승인 후 발급된 **제휴 링크**를 글의 `최저가 보기` 버튼(`href="#"`)에 삽입
   - 링크에는 `rel="nofollow sponsored"` 유지 권장
 
-## 4) GEO 테스트 연결 (geo-test 도구)
-배포해서 URL이 생기면:
-1. **노출 테스트**: 그 질문(예: "OO 추천")에 AI가 내 페이지를 인용하나? (인용율 = 성공)
-2. **경쟁 비교(갭 진단)**: 실제 인용되는 승자 페이지 대비 뭘 보완할지
-3. 페이지 개선 → 며칠 뒤 재측정 → 인용율 0% → ?%
+## 4) GEO 점수 측정 도구 (tools/)
+의존성 설치 없이 `node`만으로 동작합니다.
+
+### Phase 1 — 온페이지 GEO 점수 (무료·즉시·결정적)
+각 글의 HTML을 정적 분석해 0~100점으로 채점하고, 항목별 진단·개선 제안을 출력합니다.
+```bash
+node tools/geo-score.js                       # posts/*.html 전체 채점
+node tools/geo-score.js posts/jachi-summer.html
+node tools/geo-score.js --json posts/*.html   # 기계용 JSON 출력
+```
+채점 항목(가중치 합 100): JSON-LD 구조화 데이터 · 답변 우선(리드·결론) · FAQ ·
+비교표 · 제목 위계/질문형 · 외부 출처·인용 · 신선도(날짜) · 구체 수치·스펙 ·
+메타·시맨틱 · 목록 스캔성.
+
+### Phase 2 — 실제 인용 측정 (Anthropic API 키 필요·호출당 과금)
+AI 답변 엔진이 타깃 질문에 답할 때 내 페이지를 실제로 인용하는지(웹 검색 기반) 측정합니다.
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...                       # 필수
+export GEO_SITE=tomttoms.github.io/recommend-site         # 선택(기본값)
+node tools/geo-cite-test.js "자취방 여름 더위템 추천" "자취 필수 가전 추천"
+```
+페이지 개선 → 며칠 뒤 재측정 → 인용율(0% → ?%) 추적.
 
 > ⚠️ 쿠팡 파트너스 정책·가입 요건은 변경될 수 있으니 가입 화면에서 현재 기준을 확인하세요.
